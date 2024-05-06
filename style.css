@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    background-color: rgb(251, 199, 102);
+    font-family: sans-serif;
+}
+
+header {
+    /*display: flex;
+    justify-content: space-between;*/
+    height: 250px;
+    background-image: url("assets/pumpkin-background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin: 0px;
+    margin-top: 5px;
+}
+
+h2 {
+    padding: 5px;
+}
+
+nav{
+    text-align: right;
+}
+
+ul {
+    display: flex;    /* Display the <ul> as a flex container */
+    flex-direction: column;
+}
+
+li {
+    font-weight: bolder;
+    padding: 5px 5px;
+}
+
+li a {
+    color: white;
+    list-style: none;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.about-content {
+    padding: 10px;
+}
+
+
+.about img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin:  50px 25%;
+    width: 50%;
+}
+
+.photos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 95%;
+    margin: 2.5%;
+}
+
+.photos img {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    width: 50%;
+}
+
+img {
+    padding: 5px;
+}
