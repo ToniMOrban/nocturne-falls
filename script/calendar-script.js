@@ -30,8 +30,10 @@ const renderCalendar = () => {
     daysTag.innerHTML = liTag;
 }
 renderCalendar();
+
 prevNextIcon.forEach(icon => { // getting prev and next icons
     icon.addEventListener("click", () => { // adding click event on both icons
+        updateEventsToHidden();
         // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
         currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
         if(currMonth < 0 || currMonth > 11) { // if current month is less than 0 or greater than 11
@@ -43,5 +45,51 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
             date = new Date(); // pass the current date as date value
         }
         renderCalendar(); // calling renderCalendar function
+        updateEventsToDisplay();
     });
 });
+
+let updateEventsToDisplay = function(){
+    let targetText = months[currMonth];
+    let targetH3 = null;
+
+    // Get all the h3 elements
+    const h3Elements = document.querySelectorAll('h3');
+
+    // Iterate through the h3 elements and check for a match
+    h3Elements.forEach((h3) => {
+        if (h3.innerText === targetText) {
+            targetH3 = h3;
+        }
+    });
+
+    // Check if a matching h3 element is found
+    if (targetH3) {
+        let currentMonthDiv = targetH3.parentNode;
+        currentMonthDiv.classList.remove('hidden')
+        // Now you can use the currentMonthDiv variable to access the parent <div> of the target h3 element
+    } 
+}
+updateEventsToDisplay();
+
+let updateEventsToHidden = function(){
+    let targetText = months[currMonth];
+    let targetH3 = null;
+
+    // Get all the h3 elements
+    const h3Elements = document.querySelectorAll('h3');
+
+    // Iterate through the h3 elements and check for a match
+    h3Elements.forEach((h3) => {
+        if (h3.innerText === targetText) {
+            targetH3 = h3;
+        }
+    });
+
+    // Check if a matching h3 element is found
+    if (targetH3) {
+        let currentMonthDiv = targetH3.parentNode;
+        currentMonthDiv.classList.add('hidden')
+        // Now you can use the currentMonthDiv variable to access the parent <div> of the target h3 element
+    } 
+}

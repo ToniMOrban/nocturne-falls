@@ -7,9 +7,9 @@
 .main-calendar{
     display: flex;
     align-items: center;
-    padding: 10px 10px;
+    padding: 5px 5px;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 500px;
   }
 .wrapper{
     width: 450px;
@@ -98,4 +98,12 @@
   }
 .days li:not(.active):hover::before{
     background: #f2f2f2;
+  }
+
+  .event-descriptions li {
+    font-weight: normal;
+  }
+
+  .hidden {
+    display: none;
   }
