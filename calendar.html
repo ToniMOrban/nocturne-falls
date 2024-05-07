@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nocturne Falls</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/calendar-style.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
     <header>
@@ -19,23 +20,27 @@
         </nav>
     </header>
     <main>
-        <div class="wrapper">
-            <p class="current-date"></p>
-            <div class="icons">
-                <span id="prev" class="material-symbols-rounded">chevron_left</span>
-                <span id="next" class="material-symbols-rounded">chevron_right</span>
-            </div>
-            <div class="calendar">
-                <ul class="weeks">
-                    <li>Sun</li>
-                    <li>Mon</li>
-                    <li>Tue</li>
-                    <li>Wed</li>
-                    <li>Thu</li>
-                    <li>Fri</li>
-                    <li>Sat</li>
-                </ul>
-                <ul class="days"></ul>
+        <div class="main-calendar">
+            <div class="wrapper">
+                <div class ="banner">
+                    <p class="current-date"></p>
+                    <div class="icons">
+                        <span id="prev" class="material-symbols-rounded">&lt</span>
+                        <span id="next" class="material-symbols-rounded">&gt</span>
+                    </div>
+                </div>
+                <div class="calendar">
+                    <ul class="weeks">
+                        <li>Sun</li>
+                        <li>Mon</li>
+                        <li>Tue</li>
+                        <li>Wed</li>
+                        <li>Thu</li>
+                        <li>Fri</li>
+                        <li>Sat</li>
+                    </ul>
+                    <ul class="days"></ul>
+                </div>
             </div>
         </div>
     </main>
@@ -44,5 +49,6 @@
         <!-- Your footer content goes here -->
         <p>&copy; 2011 - 2024 Kristen Painter | All rights reserved</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
