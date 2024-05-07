@@ -1,0 +1,40 @@
+/*About Page Syling*/
+
+#about {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.about-content {
+    padding: 10px;
+}
+
+
+.about img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin:  50px 25%;
+    width: 50%;
+}
+
+.photos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 95%;
+    margin: 2.5%;
+}
+
+.photos img {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    width: 50%;
+}
+
+img {
+    padding: 5px;
+}
+
+
