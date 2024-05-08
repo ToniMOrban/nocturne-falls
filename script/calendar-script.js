@@ -8,6 +8,8 @@ currMonth = date.getMonth();
 // storing full name of all months in array
 const months = ["January", "February", "March", "April", "May", "June", "July",
               "August", "September", "October", "November", "December"];
+
+
 const renderCalendar = () => {
     let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
     lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
@@ -69,6 +71,8 @@ let updateEventsToDisplay = function(){
         currentMonthDiv.classList.remove('hidden')
         // Now you can use the currentMonthDiv variable to access the parent <div> of the target h3 element
     } 
+
+
 }
 updateEventsToDisplay();
 

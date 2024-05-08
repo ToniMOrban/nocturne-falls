@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: rgb(251, 199, 102);
+    background-color: rgb(242, 234, 246);
     font-family: sans-serif;
 }
 
@@ -49,4 +49,8 @@ li a {
 
 a {
     text-decoration: none;
+}
+
+footer{
+    margin: 15px;
 }
