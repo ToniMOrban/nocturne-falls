@@ -1,3 +1,22 @@
+//pulls dates from HTML and arranges in array
+const eventDates = [];
+const dateDivs = document.querySelectorAll(".date");
+dateDivs.forEach((dateDiv) => {
+  eventDates.push(dateDiv.innerText);
+});
+
+//formats dates from HTML into more user friendly format
+const formattedEvents = [];
+eventDates.forEach((eventDate) => {
+  let date = moment(eventDate).format("MMMM D, YYYY");
+  formattedEvents.push(date);
+});
+
+//changes displayed date on page to user friendly format
+dateDivs.forEach((element, index) => {
+  element.innerHTML = formattedEvents[index];
+});
+
 const daysTag = document.querySelector(".days"),
   currentDate = document.querySelector(".current-date"),
   prevNextIcon = document.querySelectorAll(".icons span");
@@ -21,12 +40,34 @@ const months = [
   "December",
 ];
 
+const thisMonthEvents = [];
+let isEvent;
+
+const renderDatesWithEvents = function (i) {
+  for (let n = 0; n < thisMonthEvents.length; n++) {
+    if (
+      currMonth + 1 == parseInt(moment(thisMonthEvents[n]).format("MM")) &&
+      i == parseInt(moment(thisMonthEvents[n]).format("D"))
+    ) {
+      isEvent = "event";
+      break;
+    } else {
+      isEvent = "";
+    }
+  }
+};
+
 const renderCalendar = () => {
   let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
     lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
     lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(), // getting last day of month
     lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
   let liTag = "";
+  eventDates.forEach((eventDate) => {
+    if (currMonth + 1 == parseInt(moment(eventDate).format("MM"))) {
+      thisMonthEvents.push(eventDate);
+    }
+  });
   for (let i = firstDayofMonth; i > 0; i--) {
     // creating li of previous month last days
     liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
@@ -40,8 +81,11 @@ const renderCalendar = () => {
       currYear === new Date().getFullYear()
         ? "active"
         : "";
-    liTag += `<li class="${isToday}">${i}</li>`;
+    renderDatesWithEvents(i);
+    liTag += `<li class="${isToday} ${isEvent}">${i}</li>`;
+    //console.log(liTag);
   }
+
   for (let i = lastDayofMonth; i < 6; i++) {
     // creating li of next month first days
     liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
@@ -58,6 +102,11 @@ prevNextIcon.forEach((icon) => {
     updateEventsToHidden();
     // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
     currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
+    eventDates.forEach((eventDate) => {
+      if (currMonth + 1 == parseInt(moment(eventDate).format("MM"))) {
+        thisMonthEvents.push(eventDate);
+      }
+    });
     if (currMonth < 0 || currMonth > 11) {
       // if current month is less than 0 or greater than 11
       // creating a new date of current year & month and pass it as date value
@@ -69,6 +118,9 @@ prevNextIcon.forEach((icon) => {
     }
     renderCalendar(); // calling renderCalendar function
     updateEventsToDisplay();
+    for (let i = 0; i < thisMonthEvents.length; i++) {
+      renderDatesWithEvents(i);
+    }
   });
 });
 
@@ -116,17 +168,3 @@ let updateEventsToHidden = function () {
     // Now you can use the currentMonthDiv variable to access the parent <div> of the target h3 element
   }
 };
-
-const eventDates = [];
-const dateDivs = document.querySelectorAll(".date");
-dateDivs.forEach((dateDiv) => {
-  eventDates.push(dateDiv.innerText);
-});
-console.log(eventDates);
-
-const formattedEvents = [];
-eventDates.forEach((eventDate) => {
-  let date = moment(eventDate).format("MMMM D, YYYY");
-  console.log(date);
-  formattedEvents.push(date);
-});
